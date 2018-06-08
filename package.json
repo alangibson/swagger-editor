@@ -40,6 +40,11 @@
     "watch": "webpack --config  ./webpack-dist.config.js --watch --progress"
   },
   "dependencies": {
+    "@atlassian/aui": "^7.9.0",
+    "@atlassian/connect-module-core": "^2.0.3",
+    "atlassian-connect-express": "^3.0.0",
+    "atlassian-connect-js": "^5.1.60",
+    "jquery": "3.2.1",
     "ajv": "^5.2.2",
     "boron": "^0.2.3",
     "brace": "^0.10.0",

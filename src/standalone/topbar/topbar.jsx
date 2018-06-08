@@ -247,6 +247,23 @@ export default class Topbar extends React.Component {
     }
   }
 
+  saveAndClose = () => {
+    // Save to Confluence
+    console.log('Saving spec', this.props.specSelectors.specStr())
+    AP.confluence.saveMacro(
+      {
+        // spec: this.props.specSelectors.specStr()
+      },
+      // Macro body
+      this.props.specSelectors.specStr()
+    )
+    AP.confluence.closeMacroEditor()
+  }
+
+  cancel = () => {
+    AP.confluence.closeMacroEditor()
+  }
+
   // Helpers
 
   showModal = (name) => {
@@ -382,6 +399,8 @@ export default class Topbar extends React.Component {
               { this.state.clients
                   .map((cli, i) => <li key={i}><button type="button" onClick={this.downloadGeneratedFile.bind(null, "client", cli)}>{cli}</button></li>) }
             </DropdownMenu> : null }
+            <a onClick={this.saveAndClose}>Save and Close</a>
+            <a onClick={this.cancel}>Cancel</a>
           </div>
         </div>
         <Modal className="swagger-ui modal" ref="modal">

@@ -33,6 +33,45 @@ Otherwise, you can open `index.html` directly from your filesystem in your brows
 
 If you'd like to make code changes to Swagger-Editor, you can start up a Webpack hot-reloading dev server via `npm run dev`. 
 
+##### In Dev Mode
+
+```
+# Install dependencies
+npm install jquery@3.2.1 react@15.6.2 webpack@1.15.0
+npm install
+# Get SwaggerUI build
+cp ../swagger-ui/dist/swagger-ui.css* dist/
+cp ../swagger-ui/dist/swagger-ui-bundle.js* dist/
+cp ../swagger-ui/dist/swagger-ui-standalone-preset.js* dist/
+# Run dev server
+npm run dev
+# npm run serve-static
+```
+
+##### Deploy to Firebase
+
+```
+# Set up
+npm install firebase-tools
+export PATH=$PWD/node_modules/.bin:$PATH
+firebase login
+# Build
+rm -fr dist public
+npm run build
+mkdir public
+cp -R dist public/
+cp index.html public/
+cp macro.html public/
+cp ../swagger-ui/dist/swagger-ui.css* public/dist/
+cp ../swagger-ui/dist/swagger-ui-bundle.js* public/dist/
+cp ../swagger-ui/dist/swagger-ui-standalone-preset.js* public/dist/
+cp atlassian-connect.json public/
+export BASEURL="https:\/\/poweropenapi.firebaseapp.com"
+sed -i "s/{{localBaseUrl}}/${BASEURL}/g" public/atlassian-connect.json
+# Deploy
+firebase deploy
+```
+
 ##### Browser support
 
 Swagger Editor works in the latest versions of Chrome, Safari, Firefox, Edge and IE11.

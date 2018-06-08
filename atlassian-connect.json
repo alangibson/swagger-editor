@@ -1,0 +1,64 @@
+{
+  "key": "power-open-api",
+  "name": "PowerOpenAPI",
+  "description": "A powerful OpenAPI editor",
+  "vendor": {
+    "name": "Me",
+    "url": "https://poweropenapi.firebaseapp.com"
+  },
+  "baseUrl": "{{localBaseUrl}}",
+  "links": {
+    "self": "{{localBaseUrl}}/atlassian-connect.json",
+    "homepage": "{{localBaseUrl}}/atlassian-connect.json"
+  },
+  "authentication": {
+    "type": "none"
+  },
+  "scopes": [
+    "read",
+    "write"
+  ],
+  "modules": {
+    "dynamicContentMacros": [
+      {
+        "key": "power-open-api-macro",
+        "name": {
+          "value": "PowerOpenAPI"
+        },
+        "url": "/macro.html?pageId={page.id}&pageVersion={page.version}&macroId={macro.id}",
+        "description": {
+          "value": "PowerOpenAPI Macro"
+        },
+        "outputType": "block",
+        "bodyType": "plain-text",
+        "featured": true,
+        "width": "100%",
+        "height": "100%",
+        "parameters": [
+          {
+            "identifier": "spec",
+            "name": {
+              "value": "OpenAPI Specification"
+            },
+            "description": {
+              "value": "OpenAPI Specification text"
+            },
+            "type": "string",
+            "required": true
+          }
+        ],
+        "editor": {
+          "url": "/",
+          "editTitle": {
+            "value": "Edit PowerOpenAPI"
+          },
+          "insertTitle": {
+            "value": "Insert PowerOpenAPI"
+          },
+          "width": "100%",
+          "height": "100%"
+        }
+      }
+    ]
+  }
+}

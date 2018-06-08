@@ -15,6 +15,7 @@ import EditorAutosuggestOAS3KeywordsPlugin from "./plugins/editor-autosuggest-oa
 import EditorAutosuggestRefsPlugin from "./plugins/editor-autosuggest-refs"
 import PerformancePlugin from "./plugins/performance"
 import JumpToPathPlugin from "./plugins/jump-to-path"
+import Confluence from "./plugins/confluence"
 
 // eslint-disable-next-line no-undef
 const { GIT_DIRTY, GIT_COMMIT, PACKAGE_VERSION } = buildInfo
@@ -34,11 +35,14 @@ const plugins = {
   EditorAutosuggestOAS3KeywordsPlugin,
   PerformancePlugin,
   JumpToPathPlugin,
+  Confluence
 }
 
 const defaults = {
   dom_id: "#swagger-editor", // eslint-disable-line camelcase, we have this prop for legacy reasons.
   layout: "EditorLayout",
+  // url: "https://oneka-platform-dev.cloud.pcftest.com/v2/api-docs",
+  spec: "",
   presets: [
     SwaggerUI.presets.apis
   ],

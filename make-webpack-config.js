@@ -51,7 +51,14 @@ module.exports = function(options) {
     "worker.js": ["worker-loader?inline=true", "babel"]
   }
 
-  var plugins = []
+  var plugins = [
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery',
+      'window.jQuery': 'jquery',
+      'window.$': 'jquery'
+    })
+  ]
 
   if( specialOptions.separateStylesheets ) {
     plugins.push(new ExtractTextPlugin("[name].css" + (specialOptions.longTermCaching ? "?[contenthash]" : ""), {
@@ -144,6 +151,9 @@ module.exports = function(options) {
 
     externals: {
       "buffertools": true // json-react-schema/deeper depends on buffertools, which fails.
+      // AP provided by https://poweropenapi.atlassian.net/atlassian-connect/all.js
+      // which is imported in index.html
+      // 'atlassian-connect': 'AP'
     },
 
     resolve: {
