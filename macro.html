@@ -35,7 +35,7 @@
 <body>
   <div id="swagger-ui"></div>
 
-  <script src="https://poweropenapi.atlassian.net/atlassian-connect/all.js" data-options="resize:true" type="text/javascript"></script>
+  <script src="https://poweropenapi.atlassian.net/atlassian-connect/all.js" data-options="resize:true; sizeToParent:true;" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/yamljs/0.3.0/yaml.min.js" type="text/javascript"></script>
   <script src="/dist/swagger-ui-bundle.js"> </script>
   <script src="/dist/swagger-ui-standalone-preset.js"> </script>
@@ -114,6 +114,8 @@
             console.log('Macro params are', macroParams)
             // start(YAML.parse(macroParams.parameters.spec.value))
             start(YAML.parse(macroParams.body))
+            // Force iframe to resize to fit content
+            AP.resize()
           },
           error: function(xhr, statusText, errorThrown) {
             console.log('Failed to get macro params', xhr, statusText, errorThrown)
